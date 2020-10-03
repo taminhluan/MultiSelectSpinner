@@ -294,8 +294,11 @@ public class MultiSpinnerSearch extends AppCompatSpinner implements OnCancelList
 				spinnerBuffer.append(", ");
 			}
 		}
-		if (spinnerBuffer.length() > 2)
+		if (spinnerBuffer.length() > 2) {
 			defaultText = spinnerBuffer.toString().substring(0, spinnerBuffer.toString().length() - 2);
+		} else {
+			defaultText = "";
+		}
 
 		ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(getContext(), R.layout.textview_for_spinner, new String[]{defaultText});
 		setAdapter(adapterSpinner);
@@ -326,7 +329,7 @@ public class MultiSpinnerSearch extends AppCompatSpinner implements OnCancelList
 
 		final List<KeyPairBoolData> mOriginalValues; // Original Values
 		final LayoutInflater inflater;
-		List<KeyPairBoolData> arrayList;
+		List<KeyPairBoolData> arrayList = new ArrayList<KeyPairBoolData>();
 
 		MyAdapter(Context context, List<KeyPairBoolData> arrayList) {
 			this.arrayList = arrayList;
